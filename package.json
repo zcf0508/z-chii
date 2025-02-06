@@ -24,7 +24,8 @@
     "lint:server": "eslint \"server/**/*.js\" \"bin/*.js\"",
     "lint:target": "eslint \"src/**/*.ts\"",
     "init:front_end": "cd devtools && rm -rf devtools-frontend && gclient sync --with_branch_heads --verbose",
-    "es5": "es-check es5 public/target.js test/demo.js"
+    "es5": "es-check es5 public/target.js test/demo.js",
+    "release": "bumpp"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "@eslint/js": "^9.5.0",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.12",
+    "bumpp": "^10.0.2",
     "chobitsu": "workspace:*",
     "css-loader": "^6.7.2",
     "es-check": "^6.2.1",

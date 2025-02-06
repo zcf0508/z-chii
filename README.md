@@ -1,3 +1,6 @@
+> Forked from [liriliri/chii](https://github.com/liriliri/chii)
+
+
 <div align="center">
   <a href="https://chii.liriliri.io/" target="_blank">
     <img src="https://chii.liriliri.io/icon.png" width="400">
@@ -18,8 +21,8 @@ Remote debugging tool.
 
 [npm-image]: https://img.shields.io/npm/v/chii?style=flat-square
 [npm-url]: https://npmjs.org/package/chii
-[ci-image]: https://img.shields.io/github/actions/workflow/status/liriliri/chii/main.yml?branch=master&style=flat-square
-[ci-url]: https://github.com/liriliri/chii/actions/workflows/main.yml
+[ci-image]: https://img.shields.io/github/actions/workflow/status/zcf0508/z-chii/main.yml?branch=master&style=flat-square
+[ci-url]: https://github.com/zcf0508/z-chii/actions/workflows/main.yml
 [license-image]: https://img.shields.io/npm/l/chii?style=flat-square
 
 <img src="https://chii.liriliri.io/screenshot.jpg" style="width:100%">

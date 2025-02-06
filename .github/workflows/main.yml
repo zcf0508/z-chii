@@ -26,6 +26,8 @@ jobs:
         echo "PATH=$(pwd)/depot_tools:$PATH" >> $GITHUB_ENV
     - run: |
         npm i -g @liriliri/lsla
-        npm i
-        npm run init:front_end
-        npm run build
+        npm i -g pnpm
+        pnpm i
+        pnpm -C packages/chobitsu run build
+        pnpm run init:front_end
+        pnpm run build

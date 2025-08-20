@@ -49,8 +49,8 @@ importers:
         specifier: ^10.0.2
         version: 10.0.2
       chobitsu:
-        specifier: workspace:*
-        version: link:packages/chobitsu
+        specifier: ^1.8.6
+        version: 1.8.6
       css-loader:
         specifier: ^6.7.2
         version: 6.11.0(webpack@5.97.1)
@@ -1497,6 +1497,9 @@ packages:
 
   chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
+
+  chobitsu@1.8.6:
+    resolution: {integrity: sha512-8Eb4TiKyEnX8/huSX/iXe4K37cloQFc8PIDeP/wod94dUJ3BfNFuZ8pHbxnozGL3UH8MEOyXuaEarWUDEdYXKg==}
 
   chokidar@2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
@@ -6409,6 +6412,17 @@ snapshots:
       supports-color: 7.2.0
 
   chardet@0.7.0: {}
+
+  chobitsu@1.8.6:
+    dependencies:
+      axios: 0.27.2
+      core-js: 3.40.0
+      devtools-protocol: 0.0.1339468
+      html2canvas: 1.4.1
+      licia: 1.46.0
+      luna-dom-highlighter: 1.0.2
+    transitivePeerDependencies:
+      - debug
 
   chokidar@2.1.8:
     dependencies:

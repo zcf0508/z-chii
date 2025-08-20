@@ -27,7 +27,7 @@ Remote debugging tool.
 
 <img src="https://chii.liriliri.io/screenshot.jpg" style="width:100%">
 
-Remote debugging tool like [weinre](https://people.apache.org/~pmuellr/weinre/docs/latest/Home.html), replacing web inspector with the latest [chrome devtools frontend](https://github.com/ChromeDevTools/devtools-frontend).
+Remote debugging tool like [weinre](https://www.npmjs.com/package/weinre), replacing web inspector with the latest [chrome devtools frontend](https://github.com/ChromeDevTools/devtools-frontend).
 
 ## Demo
 
@@ -59,7 +59,7 @@ Use this script to inject the target code into your webpage.
 <script src="//host-machine-ip:8080/target.js"></script>
 ```
 
-Then browse to localhost:8080 to start debugging your page.
+Then browse to http://localhost:8080 to start debugging your page.
 
 For more detailed usage instructions, please read the documentation at [chii.liriliri.io](https://chii.liriliri.io/docs/)!
 

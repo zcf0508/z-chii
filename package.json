@@ -45,7 +45,7 @@
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.12",
     "bumpp": "^10.0.2",
-    "chobitsu": "workspace:*",
+    "chobitsu": "^1.8.6",
     "css-loader": "^6.7.2",
     "es-check": "^6.2.1",
     "eslint": "^8.57.0",

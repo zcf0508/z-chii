@@ -1,6 +1,6 @@
 {
   "name": "z-chii",
-  "version": "1.15.5-beta.4",
+  "version": "1.15.5-beta.5",
   "description": "Chrome devtools framework",
   "main": "./server/index.js",
   "bin": {

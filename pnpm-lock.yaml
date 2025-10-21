@@ -18,13 +18,13 @@ importers:
         specifier: ^4.7.6
         version: 4.7.8
       koa:
-        specifier: ^2.15.3
+        specifier: 2.15.3
         version: 2.15.3
       koa-compress:
-        specifier: ^4.0.1
+        specifier: 4.0.1
         version: 4.0.1
       koa-router:
-        specifier: ^13.0.1
+        specifier: 13.0.1
         version: 13.0.1
       koa-send:
         specifier: ^5.0.0
@@ -3017,6 +3017,7 @@ packages:
   koa-router@13.0.1:
     resolution: {integrity: sha512-4/sijXdSxocIe2wv7RFFSxvo2ic1pDzPSmy11yCGztng1hx408qfw1wVmN3aqhQaU7U6nJ039JKC8ObE73Ohgw==}
     engines: {node: '>= 18'}
+    deprecated: 'Please use @koa/router instead, starting from v9! '
 
   koa-send@5.0.1:
     resolution: {integrity: sha512-tmcyQ/wXXuxpDxyNXv5yNNkdAMdFRqwtegBXUaowiQzUKqJehttS0x2j0eOZDQAyloAth5w6wwBImnFzkUz3pQ==}

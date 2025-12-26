@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
@@ -23,6 +23,7 @@ jobs:
           sudo apt-get install git curl xz-utils python3-pkg-resources python3-virtualenv python3-oauth2client
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
           echo "PATH=$(pwd)/depot_tools:$PATH" >> $GITHUB_ENV
+      - run: npm i -g npm@latest
       - run: |
           npm i -g @liriliri/lsla
           npm i -g pnpm
@@ -31,5 +32,3 @@ jobs:
           pnpm run init:front_end
           pnpm run build
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

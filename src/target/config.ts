@@ -47,26 +47,43 @@ if (cdn && endWith(cdn, '/')) {
   cdn = rtrim(cdn, '/');
 }
 
-const isNewWindow = window.opener || (window.name && window.name !== 'chii-target');  
+const sessionStore = safeStorage('session');  
 const isIframe = window.parent !== window;  
+const isNewWindow = window.opener || (window.name && window.name !== 'chii-target');  
+  
 
-const sessionStore = safeStorage('session');
-
-let id = sessionStore.getItem('chii-id');
-if (!id || isNewWindow || !isIframe) {
-  if (isIframe) {
+let storageKey = 'chii-id'; // default key
+if (isIframe) {  
+  let depth = 0;
+  let currentWindow: Window = window;
+  try {
+    while (currentWindow.parent !== currentWindow) {
+      depth++;
+      currentWindow = currentWindow.parent;
+    }
+  } catch {
+    // Cross-origin iframe
+  }
+  storageKey = `chii-iframe-l${depth}-${randomId(4)}`; // different key for each iframe
+}  
+  
+let id = sessionStore.getItem(storageKey);  
+if (!id || (isNewWindow && !isIframe)) {  
+  if (isIframe) {  
+    // iframe generate unique id
     let iframeCount = parseInt(sessionStore.getItem('chii-iframe-count') || '0');  
     iframeCount++;  
     sessionStore.setItem('chii-iframe-count', iframeCount.toString());  
     id = `${randomId(4)}-iframe${iframeCount}`;  
   } else {  
     id = randomId(6);  
-  }
-
-  sessionStore.setItem('chii-id', id);
-
-  window.name = 'chii-target';  
-}
+  }  
+    
+  sessionStore.setItem(storageKey, id);  
+  if (!isIframe) {  
+    window.name = 'chii-target';  
+  }  
+}  
 
 export {
   // https://chii.liriliri.io/base/

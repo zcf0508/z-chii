@@ -48,12 +48,21 @@ if (cdn && endWith(cdn, '/')) {
 }
 
 const isNewWindow = window.opener || (window.name && window.name !== 'chii-target');  
+const isIframe = window.parent !== window;  
 
 const sessionStore = safeStorage('session');
 
 let id = sessionStore.getItem('chii-id');
-if (!id || isNewWindow) {
-  id = randomId(6);
+if (!id || isNewWindow || !isIframe) {
+  if (isIframe) {
+    let iframeCount = parseInt(sessionStore.getItem('chii-iframe-count') || '0');  
+    iframeCount++;  
+    sessionStore.setItem('chii-iframe-count', iframeCount.toString());  
+    id = `${randomId(4)}-iframe${iframeCount}`;  
+  } else {  
+    id = randomId(6);  
+  }
+
   sessionStore.setItem('chii-id', id);
 
   window.name = 'chii-target';  

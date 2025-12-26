@@ -21,7 +21,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: |
           sudo apt-get install git curl xz-utils python3-pkg-resources python3-virtualenv python3-oauth2client
-          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git --depth=1
           echo "PATH=$(pwd)/depot_tools:$PATH" >> $GITHUB_ENV
       - run: npm i -g npm@latest
       - run: |

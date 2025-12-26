@@ -47,12 +47,16 @@ if (cdn && endWith(cdn, '/')) {
   cdn = rtrim(cdn, '/');
 }
 
+const isNewWindow = window.opener || (window.name && window.name !== 'chii-target');  
+
 const sessionStore = safeStorage('session');
 
 let id = sessionStore.getItem('chii-id');
-if (!id) {
+if (!id || isNewWindow) {
   id = randomId(6);
   sessionStore.setItem('chii-id', id);
+
+  window.name = 'chii-target';  
 }
 
 export {

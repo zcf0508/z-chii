@@ -17,7 +17,7 @@ const maxAge = ms('2h');
 module.exports = function (channelManager, domain, cdn, basePath) {
   const router = new Router();
 
-  router.get(basePath, async ctx => {
+  router.get('/', async ctx => {
     const tpl = await readTpl('index');
     ctx.body = tpl({
       domain,
@@ -26,13 +26,13 @@ module.exports = function (channelManager, domain, cdn, basePath) {
     });
   });
 
-  router.all(`${basePath}proxy`, async ctx => {
+  router.all('/proxy', async ctx => {
     await proxy(ctx, ctx.query.url);
   });
 
   if (cdn) {
     cdn = rtrim(cdn, '/');
-    router.get(`${basePath}front_end/chii_app.html`, async ctx => {
+    router.get('/front_end/chii_app.html', async ctx => {
       const tpl = await readTpl('chii_app');
       ctx.body = tpl({
         cdn,
@@ -41,12 +41,12 @@ module.exports = function (channelManager, domain, cdn, basePath) {
   }
 
   let timestamp = now();
-  router.get(`${basePath}timestamp`, ctx => {
+  router.get('/timestamp', ctx => {
     ctx.body = timestamp;
   });
   channelManager.on('target_changed', () => (timestamp = now()));
 
-  router.get(`${basePath}targets`, ctx => {
+  router.get('/targets', ctx => {
     const targets = reverse(
       map(pairs(channelManager.getTargets()), item => {
         const ret = {
@@ -64,8 +64,8 @@ module.exports = function (channelManager, domain, cdn, basePath) {
   });
 
   function createStatic(prefix, folder) {
-    router.get(`${basePath}${prefix}/*static`, async ctx => {
-      await send(ctx, ctx.path.slice(basePath.length + prefix.length), {
+    router.get(`/${prefix}/*static`, async ctx => {
+      await send(ctx, ctx.path.slice(1 + prefix.length), {
         root: path.resolve(__dirname, `../..${folder}`),
         maxAge,
       });
@@ -73,7 +73,7 @@ module.exports = function (channelManager, domain, cdn, basePath) {
   }
 
   function createStaticFile(file) {
-    router.get(`${basePath}${file}`, async ctx => {
+    router.get(`/${file}`, async ctx => {
       await send(ctx, file, {
         root: path.resolve(__dirname, '../../public'),
         maxAge,

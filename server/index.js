@@ -27,6 +27,19 @@ async function start({
   const app = new Koa();
   const wss = new WebSocketServer();
 
+  // Strip basePath prefix from incoming requests so routes always match at '/'.
+  // This supports both direct access (with basePath) and reverse proxy access
+  // (where the proxy has already stripped basePath).
+  if (basePath !== '/') {
+    const prefix = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+    app.use((ctx, next) => {
+      if (ctx.path.startsWith(prefix)) {
+        ctx.path = ctx.path.slice(prefix.length) || '/';
+      }
+      return next();
+    });
+  }
+
   app.use(compress()).use(router(wss.channelManager, domain, cdn, basePath));
 
   if (server) {
